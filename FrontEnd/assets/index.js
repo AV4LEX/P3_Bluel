@@ -75,7 +75,7 @@ const getWorks = async(categoryId) => {
     })
 
     .catch((error) => {
-        console.log(errror);
+        console.log(error);
     });
 };
 
@@ -129,7 +129,7 @@ const getCategories = async(category) => {
     })
 
     .catch((error) => {
-        console.log(errror);
+        console.log(error);
     });
 };
 
