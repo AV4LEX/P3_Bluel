@@ -1,30 +1,33 @@
-//get elements
+//get elements from DOM
 
-//get form
+//get form by id
 const form = document.getElementById("form");
 
-//get input email
+//get input email by id
 const email = document.getElementById("email");
 
-//get input password
+//get input password by id
 const password = document.getElementById("password");
 
-//get error message 
+//get error message class
 const error = document.querySelector(".error-message");
+error.innerText = "";
 
 
 
 //redirection Function
 function welcomeHome() {
+    //if login succed > redirecting user to his landing page
     document.location.href = "./index.html";
 }
 
 
-//function to exec when the form was sent 
+//function to exec when the form is submit
 form.addEventListener("submit", function (event) {
+    //cancel page reload
     event.preventDefault();
 
-    //creating an object to get data from the form
+    //creating an object to collect data from the form (html references)
     let user = {
         email: email.value,
         password: password.value,
@@ -38,7 +41,7 @@ form.addEventListener("submit", function (event) {
         headers: {
             "Content-Type": "application/json",
         },
-        //post user data in the JSON
+        //transform user data into JSON and send the body request
         body: JSON.stringify(user), 
     })
     //get the response
@@ -64,7 +67,7 @@ form.addEventListener("submit", function (event) {
         //thread welcomeHome function
         welcomeHome();
     })
-    //print error in console
+    //catch and print errors during promise chain 
     .catch((error) => {
         console.log(error);
     })

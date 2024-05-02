@@ -12,6 +12,7 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./assets/index.js" defer></script>
+	<script src="https://kit.fontawesome.com/9d9c39db54.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
 			<ul>
 				<li><a href="index.html">Projets</a></li>
 				<li>contact</li>
-				<li><a href="login.html">login</a></li>
+				<li id="logButton"><a href="login.html">login</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -43,12 +44,17 @@
 			</article>
 		</section>
 		<section id="portfolio">
+			<div class="modify">
 			<h2>Mes Projets</h2>
+			<div class="edit-link"><!--set modify in index.js--></div>
+			</div>
 			<nav class="filters-nav">
 				<button class="is-active" data-tag="all">Tous</button>
 			</nav>
 			<div class="gallery">
 				<!-- dynamic gallery (from API)-->
+				<!-- use Figure to create standalone content
+			figcaption will be used by JS to get the description-->
 			</div>
 		</section>
 		<section id="contact">
