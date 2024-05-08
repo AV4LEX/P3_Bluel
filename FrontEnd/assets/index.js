@@ -321,7 +321,7 @@ const adminPage = () => {
       });
       //display the preview when uploading
       const previewBox = document.querySelector(".upload-picture-box");
-      const previewImage = document.querySelector("img");
+      const previewImage = document.createElement("img");
       previewImage.setAttribute("id", "preview-image");
 
       // Apply styles directly to the first image
@@ -405,31 +405,30 @@ const addWorks = async () => {
 const validateForm = (e) => {
     e.preventDefault();
 
-    //function to check if form element have value
+    // Get error message elements
     let imgIssue = document.querySelector("#error-img");
     let titleIssue = document.querySelector("#error-title");
     let categoryIssue = document.querySelector("#error-category");
 
-    //if fields are full, thread addWork function
-    if(inputElement.value !== "" && selectElement !== "" && fileInputElement !== "") {
-        addWorks();
+    // Reset error messages
+    imgIssue.innerHTML = "";
+    titleIssue.innerHTML = "";
+    categoryIssue.innerHTML = "";
+
+    // Check if fields are empty
+    if (inputElement.value === "") {
+        titleIssue.innerHTML = "Titre obligatoire";
+    }
+    if (selectElement.value === "") {
+        categoryIssue.innerHTML = "Catégorie obligatoire";
+    }
+    if (fileInputElement.files.length === 0) {
+        imgIssue.innerHTML = "Image obligatoire";
     }
 
-    //if a field is empty, displaying one of these error messages 
-    if(inputFile.value == "") {
-        imgIssue.innerHTML = "image obligatoire";
-    } else {
-        titleIssue.innerHTML = "";
-    }
-    if(inputElement.value == ""){
-        titleIssue.innerHTML = "Titre obligatoire";
-    } else {
-        titleIssue = "";
-    }
-    if(selectElement.value ==""){
-        categoryIssue.innerHTML = "catégorie obligatoire";
-    } else {
-        categoryIssue.innerHTML ="";
+    // If all fields are valid, add the work
+    if (inputElement.value !== "" && selectElement.value !== "" && fileInputElement.files.length > 0) {
+        addWorks();
     }
 };
 
@@ -491,7 +490,7 @@ const openModal = () => {
 
 
 
-//function closing modal by clicking outside
+//function closing modal 
 const closeModal = () => {
     asideModal.classList.add("unactive-modal");
     modalGallery.classList.add("unactive-modal");
@@ -508,9 +507,11 @@ const closeModal = () => {
 
     //displaying pictureBox elements again
     const uploadButtonPic = document.querySelector(".upload-button");
-    uploadButtonPic.style.display = "";
+    uploadButtonPic.style.display = "block";
+
     const pictureIcon = document.querySelector(".picture-icon");
     pictureIcon.style.display = "";
+
     const typeFiles = document.querySelector(".type-files");
     typeFiles.style.display = "";
 

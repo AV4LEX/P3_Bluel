@@ -308,6 +308,7 @@ button:hover {
 }
 
 #contact {
+	padding-top: 50px;
 	width: 50%;
 	margin: auto;
 }
@@ -692,7 +693,7 @@ footer nav ul {
 .upload-picture-box i{
 	color: #B9C5CC;
 	font-size: 4.7em;
-	margin-top: 10px;
+	margin-top: -10px;
 }
 
 .upload-picture-box p{
