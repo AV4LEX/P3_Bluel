@@ -269,27 +269,31 @@ const adminPage = () => {
   const createModalProject = (project) => {
       const figureModalProject = document.createElement("figure");
       figureModalProject.setAttribute("data-tag", project.id);
-  
+      
+      //create and display image 
       const imageModalProject = document.createElement("img");
       imageModalProject.src = project.imageUrl;
       imageModalProject.alt = project.title;
       imageModalProject.classList.add("modal-project-img");
-      
+
+      //create and display the trash icon 
       const trashIcon = document.createElement("i");
       trashIcon.classList.add("trash-icon", "fas", "fa-trash-alt");
       trashIcon.setAttribute("data-id", project.id);
       let trashIconID = trashIcon.getAttribute("data-id");
-  
+      //create and display a div for the background of the trash icon  
       const moveIcon = document.createElement("div");
       moveIcon.classList.add("move-icon");
-  
+      //event to listen click on trash icon
       trashIcon.addEventListener("click", function (event) {
           event.preventDefault();
+          //prevent the user 
           if (confirm("Êtes-vous sûr de vouloir supprimer ce projet ?") == true) {
             deleteWork(trashIconID);
           }
       });
-  
+      
+      //link childs
       figureModalProject.appendChild(imageModalProject);
       figureModalProject.appendChild(trashIcon);
       trashIcon.appendChild(moveIcon);
@@ -300,6 +304,7 @@ const adminPage = () => {
   
   
   /******** ------- ADD PROJECT ------ **********/
+  //get elements for the form 
   const addWork = document.querySelector("#add-box");
   const inputElement = document.querySelector("#title");
   const selectElement = document.querySelector("#category");
@@ -344,10 +349,10 @@ const adminPage = () => {
   
   };
 
-  //Fnction to check form fields 
+  //Fonction to check form fields 
 const checkForm = () => {
 
-
+    //check if the fields are empty and return message
     if (inputElement.value !== "" && selectElement.value !== "" && fileInputElement.value !== "") {
     submitButton.style.backgroundColor = "#1D6154";
     submitButton.style.color = "#ffffff";
@@ -376,7 +381,7 @@ const addWorks = async () => {
     formData.append("title", gettitle);
     formData.append("category", getCategory);
 
-    //call the API
+    //call the API to add works with post method
     await fetch("http://localhost:5678/api/works", {
         method: "POST",
         headers: {
@@ -385,6 +390,7 @@ const addWorks = async () => {
         },
         body: formData,
     })
+    //once the fetch is done do this promise and thread other functions
     .then((response) => {
         if(response.ok) {
             getWorks(); // Updating galleries (portfolio and modal)
@@ -392,9 +398,11 @@ const addWorks = async () => {
             console.log("Le projet a été ajouté !");
             return response.json();
         } else {
+            //display recovery errors 
             console.log("Api data recovery error");
         }
     })
+    //catch errors during promise
     .catch((error) => {
         console.log(error);
     });
@@ -402,6 +410,7 @@ const addWorks = async () => {
 };
 
 
+//function to manage the form (if the form is valid or not)
 const validateForm = (e) => {
     e.preventDefault();
 
@@ -426,7 +435,7 @@ const validateForm = (e) => {
         imgIssue.innerHTML = "Image obligatoire";
     }
 
-    // If all fields are valid, add the work
+    // If all fields are valid and different of null, add the work
     if (inputElement.value !== "" && selectElement.value !== "" && fileInputElement.files.length > 0) {
         addWorks();
     }
@@ -492,6 +501,7 @@ const openModal = () => {
 
 //function closing modal 
 const closeModal = () => {
+    //adding unactive class to hide modals
     asideModal.classList.add("unactive-modal");
     modalGallery.classList.add("unactive-modal");
     addModal.classList.add("unactive-modal");
