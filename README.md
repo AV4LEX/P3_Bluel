@@ -1,8 +1,32 @@
-# Portfolio-architecte-sophie-bluel
+Bluel - Architecte d'Intérieur 🏠
 
-Code du projet 6 d'intégrateur web.
+***********************************************************************************************
+Présentation
+***********************************************************************************************
 
-## Information pour le lancer le code
+Bienvenue dans le projet Bluel, un portfolio conçu pour mettre en valeur les réalisations d'une architecte d'intérieur.
+Développé en HTML, CSS et JavaScript, ce site vise à offrir une expérience utilisateur fluide et esthétique,
+présentant les projets avec élégance et professionnalisme.
 
- - Lancer le backend depuis votre terminal en suivant les instruction du fichier ReadMe.
- - Si vous désirez afficher le code du backend et du frontend, faites le dans 2 instances de VSCode différentes pour éviter tout problème
+
+***********************************************************************************************
+Fonctionnalités principales
+***********************************************************************************************
+
+🎨 Design Élégant : Une interface raffinée et moderne, reflétant le style de l'architecte et ses réalisations.
+
+💻 Responsive Design : Optimisé pour tous les appareils, garantissant une présentation parfaite des projets sur mobile et desktop.
+
+⚡ Performance Optimale : Chargement rapide et animations fluides pour captiver l'utilisateur.
+
+🛠 Projets Interactifs :  présente des images des différents projets réalisés 
+
+
+***********************************************************************************************
+Technologies Utilisées
+***********************************************************************************************
+Front-end : HTML5, CSS3, JavaScript
+
+Design : FIGMA
+
+Outils de développement : Git, VSCode
